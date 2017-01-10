@@ -1,0 +1,16 @@
+<!--TOOLBAR BEGIN-->
+<md-toolbar fxLayout="column" fxLayoutAlign="start stretch" color="primary">
+  <!--set toolbar component layout to column because a child node which needs to be full-width is auto-wrapped around the following:-->
+  <h1>StackButton</h1>
+  <span fxFlex="vw"></span> <!-- fill the rest of the space -->
+  <div>
+    <button md-icon-button [mdMenuTriggerFor]="appMenu">
+      <md-icon>person</md-icon>
+    </button>
+    <md-menu #appMenu="mdMenu">
+      <button md-menu-item> Account </button>
+      <button md-menu-item> Logout </button>
+    </md-menu>
+  </div>
+</md-toolbar>
+<!--TOOLBAR END-->

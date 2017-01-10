@@ -38,4 +38,8 @@ module.exports = {
   //   connection: 'someMongodbServer'
   // }
 
+  models: {
+    migrate: 'safe'
+  }
+
 };

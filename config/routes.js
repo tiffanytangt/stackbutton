@@ -50,7 +50,7 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view: 'homepage'
+    view: require('./local').newApp ? 'homepage2' : 'homepage'
   },
 
   'post /payload/:projectId': {

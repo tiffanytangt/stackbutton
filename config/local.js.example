@@ -1,0 +1,41 @@
+/**
+
+ Copyright 2016, Cloud Compass Computing, Inc.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+ */
+/**
+ * Local Configuration
+ *
+ * This file contains local configuration settings used by StackButton.
+ * It is intended to be modified locally, and is included in .gitignore
+ *
+ * You may include:
+ * 1. Sensitive information you'd rather not push to
+ *    your git repository.
+ *    e.g., your personal API keys or passwords.
+ *
+ * 2. Environment-specific configuration
+ *     Basically, anything that would be annoying
+ *     to have to change every time you do a
+ *     `git pull`
+ *     e.g., your local development database, or
+ *     the S3 bucket you're using for file uploads
+ *     development.
+ * 
+ */
+
+ module.exports = {
+    newApp: true //switch to false to build old angular 1.x app
+ };

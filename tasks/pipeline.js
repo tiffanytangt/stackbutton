@@ -28,52 +28,86 @@ limitations under the License.
  *   ../
  */
 
+/**
+ * App build version to accomodate new angular 2 app injections
+ * set to true to build ng2 app instead
+ * TODO: remove this eventually
+ */
+var newApp = require('../config/local').newApp;
 
 // CSS files to inject in order
 //
 // (if you're using LESS with the built-in default config, you'll want
 //  to change `assets/styles/importer.less` instead.)
-var cssFilesToInject = [
+var cssFilesToInject = !newApp ? [
   'node_modules/angular-material/angular-material.css',
   'node_modules/nvd3/build/nv.d3.css',
-  'node_modules/mdi/css/materialdesignicons.min.css',
   'styles/**/*.css'
+] : [
+  'node_modules/@angular/material/core/theming/prebuilt/purple-green.css',
+  'ng2app/styles/**/*.css'
 ];
 
 
 // Client-side javascript files to inject in order
 // (uses Grunt-style wildcard/glob/splat expressions)
-var jsFilesToInject = [
+var jsFilesToInject = !newApp ? [
 
   // Load sails.io before everything else
   'node_modules/socket.io-client/socket.io.js',
   'node_modules/sails.io.js/sails.io.js',
   // Dependencies like jQuery, or Angular are brought in here
-  'js/dependencies/**/*.js',
-  'node_modules/jquery/dist/jquery.min.js',
-  'node_modules/angular/angular.min.js',
-  'node_modules/angular-resource/angular-resource.min.js',
-  'node_modules/angular-animate/angular-animate.min.js',
-  'node_modules/angular-cookies/angular-cookies.min.js',
-  'node_modules/angular-aria/angular-aria.min.js',
-  'node_modules/d3/d3.min.js',
-  'node_modules/nvd3/build/nv.d3.min.js',
-  'node_modules/angular-nvd3/dist/angular-nvd3.min.js',
-  'node_modules/angular-sanitize/angular-sanitize.min.js',
-  'node_modules/angular-messages/angular-messages.min.js',
-  'node_modules/angular-material/angular-material.min.js',
-  'node_modules/angular-ui-router/release/angular-ui-router.min.js',
-  'node_modules/ui-router-extras/release/modular/ct-ui-router-extras.core.min.js',
-  'node_modules/ui-router-extras/release/modular/ct-ui-router-extras.transition.min.js',
-  'node_modules/ui-router-extras/release/modular/ct-ui-router-extras.previous.min.js',
-  'node_modules/angular-sails/dist/angular-sails.min.js',
+  'node_modules/angular/angular.js',
+  'node_modules/angular-resource/angular-resource.js',
+  'node_modules/angular-animate/angular-animate.js',
+  'node_modules/angular-cookies/angular-cookies.js',
+  'node_modules/angular-aria/angular-aria.js',
+  'node_modules/d3/d3.js',
+  'node_modules/nvd3/build/nv.d3.js',
+  'node_modules/angular-nvd3/dist/angular-nvd3.js',
+  'node_modules/angular-sanitize/angular-sanitize.js',
+  'node_modules/angular-messages/angular-messages.js',
+  'node_modules/angular-material/angular-material.js',
+  'node_modules/angular-ui-router/release/angular-ui-router.js',
+  'node_modules/ui-router-extras/release/modular/ct-ui-router-extras.core.js',
+  'node_modules/ui-router-extras/release/modular/ct-ui-router-extras.transition.js',
+  'node_modules/ui-router-extras/release/modular/ct-ui-router-extras.previous.js',
+  'node_modules/angular-sails/dist/angular-sails.js',
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
-  'app/**/*.js',
-  'js/**/*.js'
+  'app/**/*.js'
+] : [
+  'node_modules/socket.io-client/socket.io.js',
+  'node_modules/sails.io.js/sails.io.js',
+  'node_modules/es6-shim/es6-shim.js',
+  'node_modules/es6-promise/dist/es6-promise.js',
+  'node_modules/systemjs/dist/system-polyfills.src.js',
+  'node_modules/systemjs/dist/system.src.js',
+  'node_modules/zone.js/dist/zone.js',
+  'node_modules/reflect-metadata/Reflect.js',
+  'ng2app/system.config.js'
 ];
 
+// These files copied into the client-side application
+// but are not injected into layout.ejs via grunt.
+// Instead, they are loaded as modules by SystemJS which is configured in ng2app/system.config.js
+var jsFilesToCopy = !newApp ? [
+    //old stuff
+] : [
+  'node_modules/@angular/core/bundles/core.umd.js',
+  'node_modules/@angular/common/bundles/common.umd.js',
+  'node_modules/@angular/compiler/bundles/compiler.umd.js',
+  'node_modules/@angular/platform-browser/bundles/platform-browser.umd.js',
+  'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
+  'node_modules/@angular/http/bundles/http.umd.js',
+  'node_modules/@angular/router/bundles/router.umd.js',
+  'node_modules/@angular/forms/bundles/forms.umd.js',
+  'node_modules/@angular/material/bundles/material.umd.js',
+  'node_modules/@angular/flex-layout/bundles/flex-layout.umd.js',
+  'node_modules/rxjs/**/*.js',
+  'ng2app/**/*.!(coffee|less|scss|sass|ts)'
+];
 
 // Client-side HTML templates are injected using the sources below
 // The ordering of these templates shouldn't matter.
@@ -84,14 +118,12 @@ var jsFilesToInject = [
 // with the linker, no problem-- you'll just want to make sure the precompiled
 // templates get spit out to the same file.  Be sure and check out `tasks/README.md`
 // for information on customizing and installing new tasks.
-var templateFilesToInject = [
-  'app/views/**/*.html',
-  'templates/**/*.html'
+var templateFilesToInject = !newApp ? [
+  'app/views/**/*.html'
+] : [
+  'ng2app/*.html'
 ];
 
-
-// Default path for public folder (see documentation for more information)
-var tmpPath = '.tmp/public/';
 
 // Prefix relative paths to source files so they point to the proper locations
 // (i.e. where the other Grunt tasks spit them out, or in some cases, where
@@ -106,7 +138,6 @@ module.exports.templateFilesToInject = templateFilesToInject.map(function (tplPa
   return require('path').join('assets/', tplPath);
 });
 
-module.exports.jsFilesToCopy = jsFilesToInject;
+module.exports.jsFilesToCopy = jsFilesToInject.concat(jsFilesToCopy);
 module.exports.cssFilesToCopy = cssFilesToInject;
-
-
+module.exports.templateFilesToCopy = templateFilesToInject;

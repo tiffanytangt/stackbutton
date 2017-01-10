@@ -1,4 +1,4 @@
-/**
+<!--
 
 Copyright 2016, Cloud Compass Computing, Inc.
 
@@ -14,26 +14,11 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-*/
-/**
- * `syncAssets`
- *
- * ---------------------------------------------------------------
- *
- * This Grunt tasklist is not designed to be used directly-- rather
- * it is a helper called by the `watch` task (`tasks/config/watch.js`).
- *
- * For more information see:
- *   http://sailsjs.org/documentation/anatomy/my-app/tasks/register/sync-assets-js
- *
- */
-module.exports = function(grunt) {
-  grunt.registerTask('syncAssets', [
-    'jst:dev',
-    'less:dev',
-    'sass:dev',
-    'sync:dev',
-    'coffee:dev',
-    'ts:dev'
-  ]);
-};
+-->
+<!--[if lt IE 10]>
+<p>You are using an <strong>outdated</strong> browser. Please
+  <a href="http://browsehappy.com/">upgrade your browser</a>
+  to improve your experience.</p>
+<![endif]-->
+<base href="/app">
+<sb-app-root></sb-app-root>

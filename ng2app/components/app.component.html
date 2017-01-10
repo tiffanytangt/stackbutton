@@ -1,0 +1,19 @@
+<div class="viewport" fxLayout="column">
+  <top-nav></top-nav>
+
+  <!--CONTENT BEGIN-->
+  <md-sidenav-container fxFlex="vh" fxLayout="column" fxLayoutAlign="start stretch">
+    <md-sidenav mode="side" opened="true">
+      <left-nav></left-nav>
+    </md-sidenav>
+
+    <div fxLayout="column" fxLayoutAlign="start stretch">
+      <router-outlet></router-outlet>
+    </div>
+
+    <md-sidenav mode="side" opened="true" align="end">
+      <right-drawer></right-drawer>
+    </md-sidenav>
+  </md-sidenav-container>
+  <!--CONTENT END-->
+</div>

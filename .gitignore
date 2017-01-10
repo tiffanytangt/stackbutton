@@ -79,7 +79,11 @@ bower_components
 # tasks and adapters.
 ################################################
 .tmp
+www
 dump.rdb
+.tscache
+.*.ts
+.sass-cache
 
 
 
@@ -97,6 +101,7 @@ lib-cov
 *.out
 *.pid
 npm-debug.log
+.node_history
 
 
 
@@ -115,8 +120,6 @@ npm-debug.log
 .netbeans
 nbproject
 .idea
-.node_history
 
 
 
-.sass-cache

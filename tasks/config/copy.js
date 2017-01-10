@@ -60,13 +60,6 @@ module.exports = function(grunt) {
           cwd: '.',
           src: pipeline.cssFilesToCopy,
           dest: '.tmp/public'
-        },
-        {
-          expand: true,
-          flatten: true,
-          cwd: './assets',
-          src: ['styles/iconfont/**/*'],
-          dest: '.tmp/public/min'
         }
 
       ]
