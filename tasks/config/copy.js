@@ -46,7 +46,7 @@ module.exports = function(grunt) {
       files: [{
         expand: true,
         cwd: './assets',
-        src: ['**/*.!(coffee|less|scss|sass)'],
+        src: ['**/*.!(coffee|less|scss)'],
         dest: '.tmp/public'
       },
         {
@@ -59,6 +59,12 @@ module.exports = function(grunt) {
           expand: true,
           cwd: '.',
           src: pipeline.cssFilesToCopy,
+          dest: '.tmp/public'
+        },
+        {
+          expand: true,
+          cwd: '.',
+          src: pipeline.templateFilesToCopy,
           dest: '.tmp/public'
         }
 

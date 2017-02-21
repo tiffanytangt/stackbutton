@@ -37,7 +37,7 @@ limitations under the License.
 module.exports = function(grunt) {
   grunt.registerTask('build', [
     'compileAssets',
-    'linkAssetsBuild',
+    'linkAssets',
     'clean:build',
     'copy:build'
   ]);

@@ -49,8 +49,8 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: require('./local').newApp ? 'homepage2' : 'homepage'
+  '/app/*': {
+    view: require('./local').newApp ? 'ng2app' : 'homepage'
   },
 
   'post /payload/:projectId': {

@@ -32,15 +32,39 @@ limitations under the License.
  *   https://github.com/tomusdrw/grunt-sync
  *
  */
+var pipeline = require('../pipeline');
+
+
 module.exports = function(grunt) {
 
   grunt.config.set('sync', {
     dev: {
-      files: [{
+      files:  [{
+        expand: true,
         cwd: './assets',
-        src: ['**/*.!(coffee|less)'],
+        src: ['**/*.!(coffee|less|scss)'],
         dest: '.tmp/public'
-      }]
+      },
+        {
+          expand: true,
+          cwd: '.',
+          src: pipeline.jsFilesToCopy,
+          dest: '.tmp/public'
+        },
+        {
+          expand: true,
+          cwd: '.',
+          src: pipeline.cssFilesToCopy,
+          dest: '.tmp/public'
+        },
+        {
+          expand: true,
+          cwd: '.',
+          src: pipeline.templateFilesToCopy,
+          dest: '.tmp/public'
+        }
+
+      ]
     }
   });
 

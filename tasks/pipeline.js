@@ -44,7 +44,6 @@ var cssFilesToInject = !newApp ? [
   'node_modules/nvd3/build/nv.d3.css',
   'styles/**/*.css'
 ] : [
-  'node_modules/@angular/material/core/theming/prebuilt/purple-green.css',
   'ng2app/styles/**/*.css'
 ];
 
@@ -106,7 +105,7 @@ var jsFilesToCopy = !newApp ? [
   'node_modules/@angular/material/bundles/material.umd.js',
   'node_modules/@angular/flex-layout/bundles/flex-layout.umd.js',
   'node_modules/rxjs/**/*.js',
-  'ng2app/**/*.!(coffee|less|scss|sass|ts)'
+  'ng2app/system.config.js'
 ];
 
 // Client-side HTML templates are injected using the sources below
@@ -121,7 +120,11 @@ var jsFilesToCopy = !newApp ? [
 var templateFilesToInject = !newApp ? [
   'app/views/**/*.html'
 ] : [
-  'ng2app/*.html'
+];
+
+var templateFilesToCopy = !newApp ? [
+] : [
+  'ng2app/**/*.html'
 ];
 
 
@@ -140,4 +143,4 @@ module.exports.templateFilesToInject = templateFilesToInject.map(function (tplPa
 
 module.exports.jsFilesToCopy = jsFilesToInject.concat(jsFilesToCopy);
 module.exports.cssFilesToCopy = cssFilesToInject;
-module.exports.templateFilesToCopy = templateFilesToInject;
+module.exports.templateFilesToCopy = templateFilesToCopy;

@@ -29,11 +29,8 @@ limitations under the License.
  */
 module.exports = function(grunt) {
   grunt.registerTask('linkAssetsBuildProd', [
-    'sails-linker:prodJsRelative',
-    'sails-linker:prodStylesRelative',
-    'sails-linker:devTpl',
-    'sails-linker:prodJsRelativeJade',
-    'sails-linker:prodStylesRelativeJade',
-    'sails-linker:devTplJade'
+    'sails-linker:prodJs',
+    'sails-linker:prodStyles',
+    'sails-linker:devTpl'
   ]);
 };

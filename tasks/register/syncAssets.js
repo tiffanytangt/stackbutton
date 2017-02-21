@@ -30,10 +30,8 @@ limitations under the License.
 module.exports = function(grunt) {
   grunt.registerTask('syncAssets', [
     'jst:dev',
-    'less:dev',
     'sass:dev',
-    'sync:dev',
-    'coffee:dev',
-    'ts:dev'
+    'ts:dev',
+    'sync:dev'
   ]);
 };

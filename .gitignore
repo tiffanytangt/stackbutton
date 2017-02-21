@@ -84,6 +84,7 @@ dump.rdb
 .tscache
 .*.ts
 .sass-cache
+*tscommand*
 
 
 
