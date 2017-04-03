@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 @Component({
+    moduleId: __moduleName,
     selector: 'left-nav',
-    templateUrl: '/ng2app/components/left-nav/left-nav.component.html'
+    templateUrl: './left-nav.component.html'
 })
 export class LeftNavComponent { }

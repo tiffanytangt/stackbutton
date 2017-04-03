@@ -1,0 +1,47 @@
+// import our theme object $sb-app-theme
+@import '../../styles/sb-app-theme';
+
+// this component theming mixin should only contain styles that depend on the input theme
+@mixin sb-top-nav-theme($theme) {
+  // Extract whichever individual palettes you need from the theme.
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $bg: map-get($theme, background);
+  $fg: map-get($theme, foreground);
+
+  // Use mat-color to extract individual colors from a palette as necessary.
+  :host, a {
+    color: mat-color($fg, text);
+  }
+
+  :host {
+    background-color: mat-color($bg, status-bar);
+  }
+
+  a:active {
+    color: mat-color($accent);
+  }
+}
+
+// STYLES
+@include sb-top-nav-theme($sb-app-dark-theme)
+
+:host {
+  padding: 5px 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+h4 {
+  margin: 0 15px;
+  font-weight: 300;
+  a {
+    letter-spacing: 4px;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+}

@@ -1,6 +1,9 @@
 import {Component} from '@angular/core';
 @Component({
+    moduleId: __moduleName,
     selector: 'top-nav',
-    templateUrl: '/ng2app/components/top-nav/top-nav.component.html'
+    templateUrl: './top-nav.component.html',
+    styleUrls: ['./top-nav.component.css']
 })
+
 export class TopNavComponent { }

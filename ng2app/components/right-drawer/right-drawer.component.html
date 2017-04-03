@@ -1,3 +1,16 @@
 <!--LEFTNAV BEGIN-->
-notification drawer contents
+<div>
+  <md-list dense>
+    <h1 md-subheader>Notifications</h1>
+    <md-list-item *ngFor="let notification of notifications">
+      <md-icon md-list-icon>check</md-icon>
+      <h3 md-line> {{notification}} </h3>
+      <p md-line>
+        <span> {{notification}} </span>
+        <span> -- {{notification}} </span>
+      </p>
+    </md-list-item>
+    <md-divider></md-divider>
+  </md-list>
+</div>
 <!--LEFTNAV END-->

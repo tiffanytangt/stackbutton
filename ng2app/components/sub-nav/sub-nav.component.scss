@@ -1,0 +1,30 @@
+// import our theme object $sb-app-theme
+@import '../../styles/sb-app-theme';
+
+// this component theming mixin should only contain styles that depend on the input theme
+@mixin sb-sub-nav-theme($theme) {
+  // Extract whichever individual palettes you need from the theme.
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $bg: map-get($theme, background);
+  $fg: map-get($theme, foreground);
+
+  // Use mat-color to extract individual colors from a palette as necessary.
+  a:active {
+    color: mat-color($primary);
+  }
+
+  :host {
+    color: mat-color($fg, text);
+    background-color: mat-color($bg, status-bar, 0.9);
+  }
+
+  .active-tab {
+     background-color: mat-color($bg, hover);
+   }
+}
+
+@include sb-sub-nav-theme($sb-app-dark-theme);
+
+
+

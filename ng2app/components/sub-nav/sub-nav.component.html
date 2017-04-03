@@ -1,0 +1,9 @@
+<nav md-tab-nav-bar fxLayout="column-reverse">
+  <a md-tab-link
+     *ngFor="let link of navList"
+     [routerLink]="link.target"
+     routerLinkActive="active-tab" #rla="routerLinkActive"
+     [active]="rla.isActive">
+    {{link.label}}
+  </a>
+</nav>
